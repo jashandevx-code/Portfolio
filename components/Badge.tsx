@@ -18,6 +18,7 @@ export function Badge({
       : variant === "cyan"
         ? "border-cyan-200/20 bg-cyan-300/10 text-cyan-100"
         : "border-white/10 bg-white/5 text-white/80";
+        
 
   return <span className={`${base} ${styles} ${className}`}>{children}</span>;
 }
