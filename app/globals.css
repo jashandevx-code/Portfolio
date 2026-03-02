@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+:root {
+  --background: #050511;
+  --foreground: #eaeaf7;
+  --muted: rgba(234, 234, 247, 0.72);
+  --border: rgba(255, 255, 255, 0.12);
+  --card: rgba(255, 255, 255, 0.06);
+
+  --accent-purple: #a855f7;
+  --accent-blue: #22d3ee;
+  --accent-pink: #ec4899;
+
+  --shadow-neon: 0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 10px 30px rgba(168, 85, 247, 0.15), 0 10px 30px rgba(34, 211, 238, 0.08);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: radial-gradient(
+        1200px circle at 10% 10%,
+        rgba(168, 85, 247, 0.25),
+        transparent 55%
+      ),
+      radial-gradient(
+        900px circle at 90% 20%,
+        rgba(34, 211, 238, 0.18),
+        transparent 50%
+      ),
+      radial-gradient(
+        700px circle at 60% 85%,
+        rgba(236, 72, 153, 0.14),
+        transparent 55%
+      ),
+      radial-gradient(
+        1400px circle at 50% -10%,
+        rgba(15, 23, 42, 0.9),
+        transparent 60%
+      ),
+      var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system,
+    Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: rgba(168, 85, 247, 0.35);
+  color: var(--foreground);
+}
+
+@layer utilities {
+  .container-px {
+    @apply px-5 sm:px-8;
+  }
+
+  .glass {
+    background: linear-gradient(
+      to bottom right,
+      rgba(255, 255, 255, 0.08),
+      rgba(255, 255, 255, 0.04)
+    );
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-neon);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .glass-hover {
+    transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+  }
+  .glass-hover:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08),
+      0 14px 40px rgba(168, 85, 247, 0.18), 0 14px 40px rgba(34, 211, 238, 0.1);
+  }
+
+  .text-muted {
+    color: var(--muted);
+  }
+
+  .gradient-text {
+    background-image: linear-gradient(
+        90deg,
+        var(--accent-purple),
+        var(--accent-blue),
+        var(--accent-pink)
+      ),
+      radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.4), transparent 60%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .neon-ring {
+    box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.2),
+      0 0 0 6px rgba(34, 211, 238, 0.06);
+  }
+
+  .focus-ring {
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/60 focus-visible:ring-offset-0;
+  }
+
+  .noise-layer {
+    pointer-events: none;
+    background-image: url("/images/noise.png");
+    mix-blend-mode: soft-light;
+    opacity: 0.22;
+  }
+
+  .hero-avatar-glow {
+    background: radial-gradient(
+      circle at 50% 35%,
+      rgba(168, 85, 247, 0.65),
+      rgba(56, 189, 248, 0.35),
+      transparent 70%
+    );
+  }
+}
